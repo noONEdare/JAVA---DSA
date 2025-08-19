@@ -1,0 +1,14 @@
+# Ignore compiled class files
+*.class
+
+# Ignore logs
+*.log
+
+# Ignore IDE/project files
+.vscode/
+.idea/
+*.iml
+
+# Ignore build output
+bin/
+out/
