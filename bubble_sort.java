@@ -21,4 +21,8 @@ class bubbleSorting{
         }
         printarr(arr);
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 4aee727ccbc0969d052f28b8e645b3d18fed69d8
