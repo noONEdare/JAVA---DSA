@@ -20,7 +20,10 @@ public class binarySearch {
         int target = 12;
 
         int result = searchTarget(arr, target);
-
-        System.out.println("target found on index:" + result);
+        if (result == -1) {
+            System.out.println("target not found");
+        } else {
+            System.out.println("target found on index:" + result);
+        }
     }
 }
