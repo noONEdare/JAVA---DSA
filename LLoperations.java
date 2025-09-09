@@ -148,7 +148,7 @@ public class LLoperations {
         list.deleteTail();
         list.printList();
 
-        System.out.println("search for 10:" + list.search(20));
+        System.out.println("search for 30:" + list.search(30));
         System.out.println("search for 50:" + list.search(50));
     }
 }
