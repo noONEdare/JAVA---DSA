@@ -117,6 +117,21 @@ public class LLoperations {
         head = prev;
     }
 
+    // reversing half of LL:
+    public Node reverseMid(Node head) {
+        Node prev = null;
+        Node curr = head;
+        Node next = null;
+        while (curr != null) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        head = prev;
+        return prev;
+    }
+
     // print list:
     public void printList() {
         Node temp = head;
@@ -127,7 +142,44 @@ public class LLoperations {
         System.out.println("NULL");
     }
 
+    // checking If the LL is palindrome:
+    public boolean isPalindrome() {
+        if (head == null || head.next == null)
+            return true;
+        Node middle = findMiddle(head);
+        Node SHF = reverseMid(middle.next);
+        Node FHF = head;
+
+        boolean palindrome = true;
+        Node temp = SHF;
+
+        while (SHF != null) {
+            if (FHF.data != SHF.data) {
+                palindrome = false;
+                break;
+            }
+            FHF = FHF.next;
+            SHF = SHF.next;
+        }
+        middle.next = reverseMid(temp);
+        return palindrome;
+    }
+
+    // finding middle of LL:
+    public Node findMiddle(Node head) {
+        Node turtle = head;
+        Node hare = head;
+
+        while (hare.next != null && hare.next.next != null) {
+            hare = hare.next.next;
+            turtle = turtle.next;
+        }
+        return turtle;
+    }
+
     public static void main(String[] args) {
+        // all basic operations on LinkedList...
+
         LLoperations list = new LLoperations();
         list.insertAtHead(20);
         list.insertAtHead(10);
@@ -150,5 +202,19 @@ public class LLoperations {
 
         System.out.println("search for 30:" + list.search(30));
         System.out.println("search for 50:" + list.search(50));
+
+        // checking if the Linked List is palindrome...
+
+        LLoperations palindromeLL = new LLoperations();
+        palindromeLL.insertAtHead(1);
+        palindromeLL.insertAtHead(2);
+        palindromeLL.insertAtHead(3);
+        palindromeLL.insertAtHead(2);
+        palindromeLL.insertAtHead(1);
+
+        palindromeLL.printList();
+
+        System.out.println("The LL is palindrome??:" + palindromeLL.isPalindrome());
+
     }
 }
