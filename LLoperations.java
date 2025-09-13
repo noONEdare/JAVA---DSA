@@ -103,20 +103,6 @@ public class LLoperations {
         return false;
     }
 
-    // reverse the list:
-    public void reverse() {
-        Node prev = null;
-        Node curr = head;
-        Node next = null;
-        while (curr != null) {
-            next = curr.next;
-            curr.next = prev;
-            prev = curr;
-            curr = next;
-        }
-        head = prev;
-    }
-
     // reversing half of LL:
     public Node reverseMid(Node head) {
         Node prev = null;
@@ -188,9 +174,6 @@ public class LLoperations {
 
         list.printList();
 
-        list.reverse();
-        list.printList();
-
         list.deleteAtIndex(2);
         list.printList();
 
@@ -200,7 +183,7 @@ public class LLoperations {
         list.deleteTail();
         list.printList();
 
-        System.out.println("search for 30:" + list.search(30));
+        System.out.println("search for 20:" + list.search(20));
         System.out.println("search for 50:" + list.search(50));
 
         // checking if the Linked List is palindrome...
