@@ -9,6 +9,32 @@ class Tnode {
 }
 
 public class binaryTree {
+    Tnode root;
+
+    void inOrder(Tnode node) {
+        if (node == null)
+            return;
+        inOrder(node.left);
+        System.out.print(node.data + " ");
+        inOrder(node.right);
+    }
+
+    void preOrder(Tnode node) {
+        if (node == null)
+            return;
+        System.out.print(node.data + " ");
+        preOrder(node.left);
+        preOrder(node.right);
+    }
+
+    void postOrder(Tnode node) {
+        if (node == null)
+            return;
+        postOrder(node.left);
+        postOrder(node.right);
+        System.out.print(node.data + " ");
+    }
+
     static int idx = -1;
 
     public static Tnode buildTree(int nodes[]) {
@@ -24,8 +50,19 @@ public class binaryTree {
     }
 
     public static void main(String[] args) {
+        binaryTree tree = new binaryTree();
         int[] nodes = { 1, 2, 4, -1, -1, 5, -1, -1, 3, -1, -1 };
         Tnode root = binaryTree.buildTree(nodes);
-        System.out.println(root.data);
+        System.out.println("ROOT NODE:" + root.data);
+
+        System.out.print("preOrder: ");
+        tree.preOrder(root);
+        System.out.println();
+        System.out.print("inOrder: ");
+        tree.inOrder(root);
+        System.out.println();
+        System.out.print("postOrder: ");
+        tree.postOrder(root);
+        System.out.println();
     }
 }
