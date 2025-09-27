@@ -1,3 +1,6 @@
+import java.util.Queue;
+import java.util.LinkedList;
+
 class Tnode {
     int data;
     Tnode left, right;
@@ -35,6 +38,21 @@ public class binaryTree {
         System.out.print(node.data + " ");
     }
 
+    void levelOrder(Tnode node) {
+        if (root == null)
+            return;
+        Queue<Tnode> q = new LinkedList<Tnode>();
+        q.add(root);
+        while (!q.isEmpty()) {
+            Tnode curr = q.poll();
+            System.out.print(curr.data + "");
+            if (curr.left != null)
+                q.add(curr.left);
+            if (curr.right != null)
+                q.add(curr.right);
+        }
+    }
+
     static int idx = -1;
 
     public static Tnode buildTree(int nodes[]) {
@@ -64,5 +82,7 @@ public class binaryTree {
         System.out.print("postOrder: ");
         tree.postOrder(root);
         System.out.println();
+        System.out.print("Level Order: ");
+        tree.levelOrder(root);
     }
 }
