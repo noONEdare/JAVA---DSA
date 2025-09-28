@@ -38,18 +38,29 @@ public class binaryTree {
         System.out.print(node.data + " ");
     }
 
-    void levelOrder(Tnode node) {
-        if (root == null)
+    void levelOrder(Tnode root) {
+        if (root == null){
             return;
+        }
         Queue<Tnode> q = new LinkedList<Tnode>();
         q.add(root);
+        q.add(null);
         while (!q.isEmpty()) {
-            Tnode curr = q.poll();
-            System.out.print(curr.data + "");
-            if (curr.left != null)
+            Tnode curr = q.remove();
+            if(curr == null){
+                System.out.println();
+                if(q.isEmpty()){
+                    break;
+                }else{
+                    q.add(null);
+                }
+            }else{
+                System.out.print(curr.data + " ");
+                if (curr.left != null)
                 q.add(curr.left);
-            if (curr.right != null)
+                if (curr.right != null)
                 q.add(curr.right);
+            }
         }
     }
 
@@ -69,7 +80,7 @@ public class binaryTree {
 
     public static void main(String[] args) {
         binaryTree tree = new binaryTree();
-        int[] nodes = { 1, 2, 4, -1, -1, 5, -1, -1, 3, -1, -1 };
+        int[] nodes = { 1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1};
         Tnode root = binaryTree.buildTree(nodes);
         System.out.println("ROOT NODE:" + root.data);
 
@@ -82,7 +93,7 @@ public class binaryTree {
         System.out.print("postOrder: ");
         tree.postOrder(root);
         System.out.println();
-        System.out.print("Level Order: ");
+        System.out.println("Level Order: ");
         tree.levelOrder(root);
     }
 }
